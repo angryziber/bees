@@ -13,4 +13,7 @@ jobs:
     - uses: actions/setup-node@v1
     - run: npm ci
     - run: npm run build
-    - run: npx surge public angrybees.surge.sh
+    - run: npm run deploy
+      env:
+        SURGE_LOGIN={{ sercets.SURGE_LOGIN }}
+        SURGE_TOKEN={{ sercets.SURGE_TOKEN }}

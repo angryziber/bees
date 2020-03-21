@@ -1,10 +1,11 @@
 {
-  "name": "svelte-app",
+  "name": "bees",
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public"
+    "start": "sirv public",
+    "deploy": "surge --project public --domain angrybees.surge.sh"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.0",
@@ -16,6 +17,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "sirv-cli": "^0.4.4"
+    "sirv-cli": "^0.4.4",
+    "surge": "^0.21.3"
   }
 }
