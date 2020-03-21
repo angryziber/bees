@@ -7,8 +7,8 @@
   let size = 24
   let x = Math.random() * boardSize.x
   let y = Math.random() * boardSize.y
-  let speedx = Math.random() * 10 - 5
-  let speedy = Math.random() * 10 - 5
+  let speedx = rnd(10)
+  let speedy = rnd(10)
 
   let numSteps = 0
 
@@ -17,8 +17,8 @@
     y += speedy
     if (++numSteps >= 10) {
       numSteps = 0
-      speedx += Math.random() * 6 - 3
-      speedy += Math.random() * 6 - 3
+      speedx += rnd(6)
+      speedy += rnd(6)
     }
     respectBoundaries()
   }
@@ -50,6 +50,10 @@
   function reverseY() {
     speedy = -speedy
     size += Math.random() * 5
+  }
+
+  function rnd(max) {
+    return (Math.random() - 0.5) * max
   }
 
   let interval
