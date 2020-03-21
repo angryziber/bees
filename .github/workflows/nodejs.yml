@@ -15,5 +15,5 @@ jobs:
     - run: npm run build
     - run: npm run deploy
       env:
-        SURGE_LOGIN: ${{ sercets.SURGE_LOGIN }}
-        SURGE_TOKEN: ${{ sercets.SURGE_TOKEN }}
+        SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+        SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
