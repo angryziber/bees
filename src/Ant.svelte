@@ -12,10 +12,17 @@
   let speedx = Math.random() * 5
   let speedy = Math.random() * 5
 
+  let numSteps = 0
+
   function step() {
     respectBoundaries()
     x += speedx
     y += speedy
+    if (++numSteps >= 10) {
+      numSteps = 0
+      speedx += Math.random() * 3
+      speedy += Math.random() * 3
+    }
   }
 
   function respectBoundaries() {
@@ -69,7 +76,7 @@
 </style>
 
 <div class="ant-wrapper" style="transform: translate({x}px, {y}px)">
-  <div class="ant" style="width: {size}px; height: {size}px; background-color: {color}; font-size: {size}px">❤</div>
+  <div class="ant" style="width: {size}px; height: {size}px; background-color: {color}; font-size: {size}px">&#128028;</div>
   {#if showInfo}
     <div class="info">{Math.round(x)} {Math.round(y)}; speed: {Math.round(speedx)} {Math.round(speedy)}</div>
   {/if}
