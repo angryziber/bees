@@ -57,6 +57,8 @@
     border-radius: 50%;
     background: grey;
     position: absolute;
+    color: white;
+    text-align: center;
   }
 
   .info {
@@ -67,7 +69,7 @@
 </style>
 
 <div class="ant-wrapper" style="transform: translate({x}px, {y}px)">
-  <div class="ant" style="width: {size}px; height: {size}px; background-color: {color}"></div>
+  <div class="ant" style="width: {size}px; height: {size}px; background-color: {color}; font-size: {size}px">❤</div>
   {#if showInfo}
     <div class="info">{Math.round(x)} {Math.round(y)}; speed: {Math.round(speedx)} {Math.round(speedy)}</div>
   {/if}
