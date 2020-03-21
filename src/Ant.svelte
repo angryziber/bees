@@ -1,14 +1,13 @@
 <script>
   import {onDestroy, onMount} from 'svelte'
-  import config from './config'
 
-  export let showInfo
+  export let showInfo, boardSize
 
-  let size = 16
+  let size = 24
   const halfSize = size / 2
   const color = '#' + Math.floor(Math.random() * 0xDDDDDD).toString(16).padStart(6, '0')
-  let x = Math.random() * config.boardSize.x
-  let y = Math.random() * config.boardSize.y
+  let x = Math.random() * boardSize.x
+  let y = Math.random() * boardSize.y
   let speedx = Math.random() * 5
   let speedy = Math.random() * 5
 
@@ -30,17 +29,17 @@
       reverseX()
       x = 0
     }
-    else if (x >= config.boardSize.x - size) {
+    else if (x >= boardSize.x - size) {
       reverseX()
-      x = config.boardSize.x - size
+      x = boardSize.x - size
     }
     if (y <= 0) {
       reverseY()
       y = 0
     }
-    else if (y >= config.boardSize.y - size) {
+    else if (y >= boardSize.y - size) {
       reverseY()
-      y = config.boardSize.y - size
+      y = boardSize.y - size
     }
   }
 
