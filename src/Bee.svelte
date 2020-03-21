@@ -3,11 +3,12 @@
 
   export let showInfo, boardSize
 
-  export let bee = {
-    size: 24,
+  const defaultSize = 24
+  let bee = {
+    size: defaultSize,
     color: '#' + Math.floor(Math.random() * 0xDDDDDD).toString(16).padStart(6, '0'),
-    x: Math.random() * boardSize.x,
-    y: Math.random() * boardSize.y,
+    x: Math.random() * (boardSize.x - defaultSize),
+    y: Math.random() * (boardSize.y - defaultSize),
     speedx: rnd(5),
     speedy: rnd(5)
   }
