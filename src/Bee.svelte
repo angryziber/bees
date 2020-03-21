@@ -1,10 +1,10 @@
 <script>
-  import {onDestroy, onMount} from 'svelte'
+  import {onDestroy, onMount, getContext} from 'svelte'
 
-  export let showInfo, boardSize
+  export let i, showInfo, boardSize
 
   const defaultSize = 24
-  let bee = {
+  const bee = {
     size: defaultSize,
     color: '#' + Math.floor(Math.random() * 0xDDDDDD).toString(16).padStart(6, '0'),
     x: Math.random() * (boardSize.x - defaultSize),
@@ -12,6 +12,9 @@
     speedx: rnd(5),
     speedy: rnd(5)
   }
+
+  const allBees = getContext('bees')
+  allBees[i] = bee
 
   let numSteps = 0
 
@@ -23,7 +26,21 @@
       bee.speedx += rnd(3)
       bee.speedy += rnd(3)
     }
+    checkCollisions()
     checkBoundaries()
+  }
+
+  function checkCollisions() {
+    allBees.forEach(b => {
+      if (b === bee) return
+      const xd = Math.abs(b.x - bee.x)
+      const yd = Math.abs(b.y - bee.y)
+      const distance = Math.sqrt(Math.pow(xd, 2) + Math.pow(yd, 2))
+      if (distance <= b.size + bee.size) {
+        if (xd > yd) bee.speedx = -bee.speedx
+        else bee.speedy = -bee.speedy
+      }
+    })
   }
 
   function checkBoundaries() {

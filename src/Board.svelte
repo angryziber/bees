@@ -1,6 +1,8 @@
 <script>
+  import {setContext} from 'svelte'
   import Bee from './Bee.svelte'
   export let numBees, showInfo
+  setContext('bees', [])
   let board, boardSize
   $: if (board) {
     const rect = board.getBoundingClientRect()
@@ -22,7 +24,7 @@
 <div bind:this={board} class="board">
   {#if boardSize}
     {#each Array(numBees) as a, i}
-      <Bee {showInfo} {boardSize}/>
+      <Bee {i} {showInfo} {boardSize}/>
     {/each}
   {/if}
 </div>
