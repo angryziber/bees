@@ -7,8 +7,8 @@
   const bee = {
     size: defaultSize,
     color: '#' + Math.floor(Math.random() * 0xDDDDDD).toString(16).padStart(6, '0'),
-    x: Math.random() * (boardSize.x - defaultSize),
-    y: Math.random() * (boardSize.y - defaultSize),
+    x: Math.random() * (boardSize.x - defaultSize) + defaultSize / 2,
+    y: Math.random() * (boardSize.y - defaultSize) + defaultSize / 2,
     speedx: rnd(5),
     speedy: rnd(5)
   }
@@ -44,21 +44,22 @@
   }
 
   function checkBoundaries() {
-    if (bee.x <= 0) {
+    const halfSize = bee.size / 2
+    if (bee.x <= halfSize) {
       reverseX()
-      bee.x = 0
+      bee.x = halfSize
     }
-    else if (bee.x >= boardSize.x - bee.size) {
+    else if (bee.x >= boardSize.x - halfSize) {
       reverseX()
-      bee.x = boardSize.x - bee.size
+      bee.x = boardSize.x - halfSize
     }
-    if (bee.y <= 0) {
+    if (bee.y <= halfSize) {
       reverseY()
-      bee.y = 0
+      bee.y = halfSize
     }
-    else if (bee.y >= boardSize.y - bee.size) {
+    else if (bee.y >= boardSize.y - halfSize) {
       reverseY()
-      bee.y = boardSize.y - bee.size
+      bee.y = boardSize.y - halfSize
     }
   }
 
@@ -103,7 +104,7 @@
 </style>
 
 <div style="transform: translate({bee.x}px, {bee.y}px)">
-  <div class="bee" style="width: {bee.size}px; height: {bee.size}px; background-color: {bee.color}; font-size: {bee.size}px">
+  <div class="bee" style="width: {bee.size}px; height: {bee.size}px; background-color: {bee.color}; font-size: {bee.size}px; transform: translate({-bee.size/2}px, {-bee.size/2}px)">
     <span class="icon">&#x1F41D;</span>
   </div>
   {#if showInfo}
