@@ -16,10 +16,10 @@
   }
 
   function respectBoundaries() {
-    if (x < 0) x = 0
-    else if (x > config.boardSize.x) x = config.boardSize.x
-    if (y < 0) y = 0
-    else if (y > config.boardSize.y) y = config.boardSize.y
+    if (x <= 0) speed = -speed
+    else if (x >= config.boardSize.x) speed = -speed
+    if (y <= 0) y = 0
+    else if (y >= config.boardSize.y) y = config.boardSize.y
   }
 
   let interval
@@ -33,8 +33,14 @@
     background: grey;
     position: absolute;
   }
+
+  .info {
+    position: absolute;
+    top: 20px;
+  }
 </style>
 
 <div class="ant-wrapper" style="transform: translate({x}px, {y}px)">
   <div class="ant" style="{antCss}"></div>
+  <div class="info">x: {Math.round(x)}, speed: {Math.round(speed)}</div>
 </div>
