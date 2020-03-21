@@ -1,16 +1,20 @@
 <script>
-
+  import Ant from './Ant.svelte'
+  export let size
+  export let numAnts
 </script>
 
 <style>
   .board {
     background: white;
     border: 1px solid grey;
-    width: 800px;
-    height: 600px;
     margin: auto;
+    position: relative;
   }
 </style>
 
-<div class="board">
+<div class="board" style="width: {size.x}px; height: {size.y}px">
+  {#each Array(numAnts) as a, i}
+    <Ant boardSize={size}/>
+  {/each}
 </div>
