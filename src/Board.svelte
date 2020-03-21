@@ -1,7 +1,7 @@
 <script>
   import config from './config'
   import Ant from './Ant.svelte'
-  export let numAnts
+  export let numAnts, showInfo
 </script>
 
 <style>
@@ -15,6 +15,6 @@
 
 <div class="board" style="width: {config.boardSize.x}px; height: {config.boardSize.y}px; padding-right: {config.antSize}px; padding-bottom: {config.antSize}px">
   {#each Array(numAnts) as a, i}
-    <Ant/>
+    <Ant {showInfo}/>
   {/each}
 </div>
