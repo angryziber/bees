@@ -44,12 +44,12 @@
 
   function reverseX() {
     speedx = -speedx
-    size = size - Math.random() * 5
+    size -= Math.random() * 5
   }
 
   function reverseY() {
     speedy = -speedy
-    size = size + Math.random() * 5
+    size += Math.random() * 5
   }
 
   let interval
@@ -66,6 +66,11 @@
     text-align: center;
   }
 
+  .icon {
+    display: block;
+    transform: translate(-0.1em, -0.1em);
+  }
+
   .info {
     position: absolute;
     top: 20px;
@@ -74,7 +79,9 @@
 </style>
 
 <div class="ant-wrapper" style="transform: translate({x}px, {y}px)">
-  <div class="ant" style="width: {size}px; height: {size}px; background-color: {color}; font-size: {size}px">&#128028;</div>
+  <div class="ant" style="width: {size}px; height: {size}px; background-color: {color}; font-size: {size}px">
+    <span class="icon">&#x1F41D;</span>
+  </div>
   {#if showInfo}
     <div class="info">{Math.round(x)} {Math.round(y)}; speed: {Math.round(speedx)} {Math.round(speedy)}</div>
   {/if}
