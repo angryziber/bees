@@ -3,7 +3,7 @@
 
   export let i, showInfo, boardSize
 
-  const defaultSize = 24
+  const defaultSize = 32
   const bee = {
     size: defaultSize,
     color: '#' + Math.floor(Math.random() * 0xDDDDDD).toString(16).padStart(6, '0'),
@@ -24,7 +24,9 @@
     if (++numSteps >= 10) {
       numSteps = 0
       bee.speedx += rnd(3)
+      if (Math.abs(bee.speedx) > 10) bee.speedx *= 0.5
       bee.speedy += rnd(3)
+      if (Math.abs(bee.speedy) > 10) bee.speedy *= 0.5
     }
     checkCollisions()
     checkBoundaries()
@@ -66,11 +68,13 @@
   function reverseX() {
     bee.speedx = -bee.speedx
     bee.size -= Math.random() * 5
+    if (bee.size < 16) bee.size = 16
   }
 
   function reverseY() {
     bee.speedy = -bee.speedy
     bee.size += Math.random() * 5
+    if (bee.size > 64) bee.size = 64
   }
 
   function rnd(max) {
