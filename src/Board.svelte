@@ -1,6 +1,6 @@
 <script>
+  import config from './config'
   import Ant from './Ant.svelte'
-  export let size
   export let numAnts
 </script>
 
@@ -13,8 +13,8 @@
   }
 </style>
 
-<div class="board" style="width: {size.x}px; height: {size.y}px">
+<div class="board" style="width: {config.boardSize.x}px; height: {config.boardSize.y}px; padding-right: {config.antSize}px; padding-bottom: {config.antSize}px">
   {#each Array(numAnts) as a, i}
-    <Ant boardSize={size}/>
+    <Ant/>
   {/each}
 </div>
