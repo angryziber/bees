@@ -1,4 +1,8 @@
-# Ants for programming with kids
+# Flying bees for programming with kids
+
+Nothing fancy, but it's cool to change `src/Bee.svelte` and watch how bees change their behaviour together with kids.
+
+Built with Svelte for easy reactive programming.
 
 ## Get started
 
