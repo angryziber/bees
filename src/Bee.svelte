@@ -3,54 +3,55 @@
 
   export let showInfo, boardSize
 
-  const color = '#' + Math.floor(Math.random() * 0xDDDDDD).toString(16).padStart(6, '0')
-
-  let size = 24
-  let x = Math.random() * boardSize.x
-  let y = Math.random() * boardSize.y
-  let speedx = rnd(5)
-  let speedy = rnd(5)
+  export let bee = {
+    size: 24,
+    color: '#' + Math.floor(Math.random() * 0xDDDDDD).toString(16).padStart(6, '0'),
+    x: Math.random() * boardSize.x,
+    y: Math.random() * boardSize.y,
+    speedx: rnd(5),
+    speedy: rnd(5)
+  }
 
   let numSteps = 0
 
   function step() {
-    x += speedx
-    y += speedy
+    bee.x += bee.speedx
+    bee.y += bee.speedy
     if (++numSteps >= 10) {
       numSteps = 0
-      speedx += rnd(3)
-      speedy += rnd(3)
+      bee.speedx += rnd(3)
+      bee.speedy += rnd(3)
     }
     checkBoundaries()
   }
 
   function checkBoundaries() {
-    if (x <= 0) {
+    if (bee.x <= 0) {
       reverseX()
-      x = 0
+      bee.x = 0
     }
-    else if (x >= boardSize.x - size) {
+    else if (bee.x >= boardSize.x - bee.size) {
       reverseX()
-      x = boardSize.x - size
+      bee.x = boardSize.x - bee.size
     }
-    if (y <= 0) {
+    if (bee.y <= 0) {
       reverseY()
-      y = 0
+      bee.y = 0
     }
-    else if (y >= boardSize.y - size) {
+    else if (bee.y >= boardSize.y - bee.size) {
       reverseY()
-      y = boardSize.y - size
+      bee.y = boardSize.y - bee.size
     }
   }
 
   function reverseX() {
-    speedx = -speedx
-    size -= Math.random() * 5
+    bee.speedx = -bee.speedx
+    bee.size -= Math.random() * 5
   }
 
   function reverseY() {
-    speedy = -speedy
-    size += Math.random() * 5
+    bee.speedy = -bee.speedy
+    bee.size += Math.random() * 5
   }
 
   function rnd(max) {
@@ -83,11 +84,11 @@
   }
 </style>
 
-<div style="transform: translate({x}px, {y}px)">
-  <div class="bee" style="width: {size}px; height: {size}px; background-color: {color}; font-size: {size}px">
+<div style="transform: translate({bee.x}px, {bee.y}px)">
+  <div class="bee" style="width: {bee.size}px; height: {bee.size}px; background-color: {bee.color}; font-size: {bee.size}px">
     <span class="icon">&#x1F41D;</span>
   </div>
   {#if showInfo}
-    <div class="info">{Math.round(x)} {Math.round(y)}; speed: {Math.round(speedx)} {Math.round(speedy)}</div>
+    <div class="info">{Math.round(bee.x)} {Math.round(bee.y)}; speed: {Math.round(bee.speedx)} {Math.round(bee.speedy)}</div>
   {/if}
 </div>
