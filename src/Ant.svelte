@@ -4,27 +4,47 @@
 
   export let showInfo
 
-  const size = 16
+  let size = 16
   const halfSize = size / 2
   const color = '#' + Math.floor(Math.random() * 0xDDDDDD).toString(16).padStart(6, '0')
-  const antCss = `width: ${size}px; height: ${size}px; background-color: ${color}`
   let x = Math.random() * config.boardSize.x
   let y = Math.random() * config.boardSize.y
   let speedx = Math.random() * 5
   let speedy = Math.random() * 5
 
   function step() {
+    respectBoundaries()
     x += speedx
     y += speedy
-    respectBoundaries()
   }
 
   function respectBoundaries() {
-    if (x <= 0) speedx = -speedx
-    else if (x >= config.boardSize.x) speedx = -speedx
+    if (x <= 0) {
+      reverseX()
+      x = 0
+    }
+    else if (x >= config.boardSize.x - size) {
+      reverseX()
+      x = config.boardSize.x - size
+    }
+    if (y <= 0) {
+      reverseY()
+      y = 0
+    }
+    else if (y >= config.boardSize.y - size) {
+      reverseY()
+      y = config.boardSize.y - size
+    }
+  }
 
-    if (y <= 0) speedy = -speedy
-    else if (y >= config.boardSize.y) speedy = -speedy
+  function reverseX() {
+    speedx = -speedx
+    size = size - Math.random() * 5
+  }
+
+  function reverseY() {
+    speedy = -speedy
+    size = size + Math.random() * 5
   }
 
   let interval
@@ -47,7 +67,7 @@
 </style>
 
 <div class="ant-wrapper" style="transform: translate({x}px, {y}px)">
-  <div class="ant" style="{antCss}"></div>
+  <div class="ant" style="width: {size}px; height: {size}px; background-color: {color}"></div>
   {#if showInfo}
     <div class="info">{Math.round(x)} {Math.round(y)}; speed: {Math.round(speedx)} {Math.round(speedy)}</div>
   {/if}

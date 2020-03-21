@@ -13,7 +13,7 @@
   }
 </style>
 
-<div class="board" style="width: {config.boardSize.x}px; height: {config.boardSize.y}px; padding-right: {config.antSize}px; padding-bottom: {config.antSize}px">
+<div class="board" style="width: {config.boardSize.x}px; height: {config.boardSize.y}px">
   {#each Array(numAnts) as a, i}
     <Ant {showInfo}/>
   {/each}

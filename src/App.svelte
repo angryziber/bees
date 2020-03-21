@@ -1,6 +1,6 @@
 <script>
   import Board from './Board.svelte'
-	let numAnts = 5
+	let numAnts = 10
   let showInfo = false
 </script>
 
