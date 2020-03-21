@@ -3,25 +3,24 @@
 
   export let showInfo, boardSize
 
-  let size = 24
-  const halfSize = size / 2
   const color = '#' + Math.floor(Math.random() * 0xDDDDDD).toString(16).padStart(6, '0')
+  let size = 24
   let x = Math.random() * boardSize.x
   let y = Math.random() * boardSize.y
-  let speedx = Math.random() * 5
-  let speedy = Math.random() * 5
+  let speedx = Math.random() * 10 - 5
+  let speedy = Math.random() * 10 - 5
 
   let numSteps = 0
 
   function step() {
-    respectBoundaries()
     x += speedx
     y += speedy
     if (++numSteps >= 10) {
       numSteps = 0
-      speedx += Math.random() * 3
-      speedy += Math.random() * 3
+      speedx += Math.random() * 6 - 3
+      speedy += Math.random() * 6 - 3
     }
+    respectBoundaries()
   }
 
   function respectBoundaries() {
