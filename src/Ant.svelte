@@ -4,11 +4,12 @@
   export let showInfo, boardSize
 
   const color = '#' + Math.floor(Math.random() * 0xDDDDDD).toString(16).padStart(6, '0')
+
   let size = 24
   let x = Math.random() * boardSize.x
   let y = Math.random() * boardSize.y
-  let speedx = rnd(10)
-  let speedy = rnd(10)
+  let speedx = rnd(5)
+  let speedy = rnd(5)
 
   let numSteps = 0
 
@@ -17,13 +18,13 @@
     y += speedy
     if (++numSteps >= 10) {
       numSteps = 0
-      speedx += rnd(6)
-      speedy += rnd(6)
+      speedx += rnd(3)
+      speedy += rnd(3)
     }
-    respectBoundaries()
+    checkBoundaries()
   }
 
-  function respectBoundaries() {
+  function checkBoundaries() {
     if (x <= 0) {
       reverseX()
       x = 0
@@ -57,7 +58,7 @@
   }
 
   let interval
-  onMount(() => interval = setInterval(step, 60))
+  onMount(() => interval = setInterval(step, 16))
   onDestroy(() => clearInterval(interval))
 </script>
 
