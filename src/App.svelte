@@ -1,6 +1,6 @@
 <script>
   import Board from './Board.svelte'
-	let numAnts = 10
+	let numBees = 10
   let showInfo = false
 </script>
 
@@ -17,8 +17,8 @@
 
 <header>
   <h1>
-    Ants
-		<input type="number" bind:value={numAnts}>
+    Bees
+		<input type="number" bind:value={numBees}>
     <label>
 		  <input type="checkbox" bind:checked={showInfo}>
       Info
@@ -27,5 +27,5 @@
 </header>
 
 <main>
-  <Board size={{x: 800, y: 600}} {numAnts} {showInfo}/>
+  <Board size={{x: 800, y: 600}} {numBees} {showInfo}/>
 </main>

@@ -63,7 +63,7 @@
 </script>
 
 <style>
-  .ant {
+  .bee {
     border-radius: 50%;
     background: grey;
     position: absolute;
@@ -78,13 +78,13 @@
 
   .info {
     position: absolute;
-    top: 20px;
+    top: 30px;
     background: rgba(255,255,255,0.7)
   }
 </style>
 
-<div class="ant-wrapper" style="transform: translate({x}px, {y}px)">
-  <div class="ant" style="width: {size}px; height: {size}px; background-color: {color}; font-size: {size}px">
+<div style="transform: translate({x}px, {y}px)">
+  <div class="bee" style="width: {size}px; height: {size}px; background-color: {color}; font-size: {size}px">
     <span class="icon">&#x1F41D;</span>
   </div>
   {#if showInfo}

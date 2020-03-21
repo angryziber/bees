@@ -1,6 +1,6 @@
 <script>
-  import Ant from './Ant.svelte'
-  export let numAnts, showInfo
+  import Bee from './Bee.svelte'
+  export let numBees, showInfo
   let board, boardSize
   $: if (board) {
     const rect = board.getBoundingClientRect()
@@ -21,8 +21,8 @@
 
 <div bind:this={board} class="board">
   {#if boardSize}
-    {#each Array(numAnts) as a, i}
-      <Ant {showInfo} {boardSize}/>
+    {#each Array(numBees) as a, i}
+      <Bee {showInfo} {boardSize}/>
     {/each}
   {/if}
 </div>
